@@ -7,6 +7,9 @@ export interface ITasksProps {
     tasksArr: [{ detail: string; isCompleted: boolean; hover: string }];
     tasksAmnt: number;
   };
+  deleteTask(index: number): void;
+  onEnter(index: number): void;
+  onLeave(index: number): void;
 }
 
 export interface IFormProps {
@@ -38,13 +41,60 @@ const Main = () => {
     });
   };
 
+  /**
+   * @description delete task from array
+   * @param index
+   */
+  const deleteTask = (index: number): void => {
+    const tasksArr = tasksObj.tasksArr;
+    tasksArr.splice(index, 1);
+
+    setTasksObj({
+      tasksArr,
+      tasksAmnt: tasksArr.length
+    });
+  };
+
+  /**
+   * @description mouse event to add hidden class to delete button
+   * @param index
+   */
+  const onLeave = (index: number): void => {
+    const tasksArr = tasksObj.tasksArr;
+    tasksObj.tasksArr[index].hover = "hidden";
+
+    setTasksObj({
+      tasksArr,
+      tasksAmnt: tasksObj.tasksArr.length
+    });
+  };
+
+  /**
+   * @description mouse event to remove hidden class to delete button
+   * @param index
+   */
+  const onEnter = (index: number): void => {
+    const tasksArr = tasksObj.tasksArr;
+    tasksObj.tasksArr[index].hover = "";
+
+    setTasksObj({
+      tasksArr,
+      tasksAmnt: tasksObj.tasksArr.length
+    });
+  };
+
   return (
     <main className="container">
       <header>
         <h1>ToDo App</h1>
         <Form addTask={addTask} />
       </header>
-      <Tasks tasksObj={tasksObj} />
+      <Tasks
+        tasksObj={tasksObj}
+        deleteTask={deleteTask}
+        onLeave={onLeave}
+        onEnter={onEnter}
+      />
     </main>
   );
 };
