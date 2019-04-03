@@ -1,2 +1,18 @@
 @import "./components";
 
+
+body {
+    color: #333;
+    background: #f7f7f7;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.hidden {
+    visibility: hidden;
+}
