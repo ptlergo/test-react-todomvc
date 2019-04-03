@@ -8,6 +8,7 @@ export interface ITasksProps {
     tasksAmnt: number;
   };
   deleteTask(index: number): void;
+  completeTask(index: number): void;
   onEnter(index: number): void;
   onLeave(index: number): void;
 }
@@ -56,6 +57,23 @@ const Main = () => {
   };
 
   /**
+   * @description use for checkbox to indicate task is done
+   * @param index
+   */
+  const completeTask = (index: number): void => {
+    const tasksArr = tasksObj.tasksArr;
+
+    // toggle state
+    tasksArr[index].isCompleted = tasksArr[index].isCompleted ? false : true;
+
+    setTasksObj({
+      tasksArr,
+      tasksAmnt: tasksArr.length,
+      hover: tasksObj.hover
+    });
+  };
+
+  /**
    * @description mouse event to add hidden class to delete button
    * @param index
    */
@@ -85,13 +103,14 @@ const Main = () => {
 
   return (
     <main className="container">
-      <header>
+      <header className="hero card">
         <h1>ToDo App</h1>
         <Form addTask={addTask} />
       </header>
       <Tasks
         tasksObj={tasksObj}
         deleteTask={deleteTask}
+        completeTask={completeTask}
         onLeave={onLeave}
         onEnter={onEnter}
       />
