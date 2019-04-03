@@ -13,7 +13,10 @@ export default (props: IFormProps) => {
    */
   const handleSubmit = (e: any): void => {
     e.preventDefault();
-    addTask('test')
+    if (!value) return;
+    addTask(value.trim());
+    // reset value state
+    setValue("");
   };
 
   return (
