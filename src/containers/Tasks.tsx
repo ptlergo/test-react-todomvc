@@ -10,6 +10,9 @@ export interface ITaskProps {
   detail: string;
   hover: string;
   isCompleted: boolean;
+  onLeave(): void;
+  onEnter(): void;
+  deleteTask(index: number): void;
 }
 
 const Tasks = (props: ITasksProps) => {
@@ -24,6 +27,9 @@ const Tasks = (props: ITasksProps) => {
           index={index}
           hover={task.hover}
           isCompleted={task.isCompleted}
+          onEnter={() => props.onEnter(index)}
+          onLeave={() => props.onLeave(index)}
+          deleteTask={() => props.deleteTask(index)}
         />
       );
     });
