@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { ITasksProps } from "./Main";
 
@@ -13,11 +13,15 @@ export interface ITaskProps {
   onLeave(): void;
   onEnter(): void;
   deleteTask(index: number): void;
+  completeTask(index: number): void;
 }
 
 const Tasks = (props: ITasksProps) => {
   const { tasksArr, tasksAmnt } = props.tasksObj;
 
+  /**
+   * @description render each task
+   */
   const renderTask = (): any =>
     tasksArr.map((task: any, index: number) => {
       return (
@@ -30,9 +34,11 @@ const Tasks = (props: ITasksProps) => {
           onEnter={() => props.onEnter(index)}
           onLeave={() => props.onLeave(index)}
           deleteTask={() => props.deleteTask(index)}
+          completeTask={() => props.completeTask(index)}
         />
       );
     });
+    
   return (
     <>
       {tasksAmnt > 0 && (
