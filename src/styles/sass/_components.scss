@@ -1,0 +1,52 @@
+.hero {
+    border: solid 1rem #e3e3e3;
+    padding: 1rem;
+
+    h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        padding: 1rem 0;
+    }
+}
+form {
+    display: flex;
+    flex-wrap: wrap;
+    .form-control {
+        width: 100%;
+        background: #fff;
+        border: solid 0.3rem #e3e3e3;
+
+    }
+    .btn {
+        width: 100%;
+        margin: 1rem 0;
+    }
+}
+
+.card {
+    border: none;
+    margin: 1rem 0;
+    h3 {
+        font-size: 1.4rem;
+        color: #17a2b8;
+    }
+    &-header {
+        background: none;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.tasks {
+    background: #fff;
+    padding: 1rem;
+    &__item {
+        border: solid #e3e3e3 0.25rem;
+    }
+}
+
+.actions-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
