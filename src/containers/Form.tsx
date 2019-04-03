@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import Input from "../components/Input";
+
 import { IFormProps } from "./Main";
 
-export default (props: IFormProps) => {
+import Input from "../components/Input";
+import Button from "../components/Button";
 
+export default (props: IFormProps) => {
   const [value, setValue] = useState("");
   const { addTask } = props;
 
   /**
    * @description on subm
-   * @param e 
+   * @param e
    */
   const handleSubmit = (e: any): void => {
     e.preventDefault();
@@ -22,7 +24,7 @@ export default (props: IFormProps) => {
   return (
     <form>
       <Input value={value} setValue={setValue} />
-      <button onClick={handleSubmit}></button>
+      <Button type={"btn btn-primary"} action={handleSubmit} text="Add Task" />
     </form>
   );
 };
