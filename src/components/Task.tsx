@@ -3,6 +3,7 @@ import React from "react";
 import { ITaskProps } from "../containers/Tasks";
 
 import Button from "./Button";
+import Checkbox from "./Checkbox";
 
 export default (props: ITaskProps) => {
   return (
@@ -19,6 +20,10 @@ export default (props: ITaskProps) => {
       <div className="card-body">
         <p className="card-text">{props.detail}</p>
         <div className="actions-box">
+        <Checkbox
+            isCompleted={props.isCompleted}
+            action={props.completeTask}
+          />
           <Button
             type={`${props.hover} btn btn-danger`}
             action={props.deleteTask}
